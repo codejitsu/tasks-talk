@@ -163,12 +163,11 @@ val taskRm = Sudo ~ Par ~ Rm(hosts, user.home / artifact)
 
 				<section>
 					<section id="orelse">
-						<h2>Hmm...</h2>
-						<p><span class="fragment">But what if...</span> <span class="fragment">orElse</span></p>
-						<p class="fragment">
+						<h2>But what if...</h2>
+						<p>
 						<pre><code data-trim contenteditable>
 
-val restartTomcats = RestartTomcat(hosts) orElse NotifyRestartTomcatFailed
+val tom = RestartTomcat(hosts) orElse MessageTomcatFailed
 
 					</code></pre>	
 						</p>

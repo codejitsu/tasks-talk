@@ -135,6 +135,27 @@ val taskComposition = taskRm andThen taskUpload
 						</span></p>
 					</section>
 				</section>
+				<section>	
+					<section id="par">
+						<h2>Parallel all the things!</h2>
+						<p><span class="fragment">
+						<pre><code data-trim contenteditable>
+val taskRm = Par ~ Rm(hosts, user.home / artifact)
+					</code></pre>	
+						</span></p>
+					</section>
+				</section>
+
+				<section>	
+					<section id="sudo">
+						<h2>Sudo all the things!</h2>
+						<p><span class="fragment">
+						<pre><code data-trim contenteditable>
+val taskRm = Sudo ~ Par ~ Rm(hosts, user.home / artifact)
+					</code></pre>	
+						</span></p>
+					</section>
+				</section>
 
 				<!-- Example of nested vertical slides -->
 				<section>

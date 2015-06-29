@@ -203,7 +203,7 @@ val stage = new Production
 Sudo ~ Par ~ StopTomcat(hosts)
 					</code></pre>	
 						</p>
-						<p><span class="fragment">Compile time error:</span> <span class="fragment">Stage not allowed to run task 'StopTomcat'.</span></p>
+						<p><span class="fragment">Compile time error:</span> <span class="fragment" style="font-style:italic">Stage not allowed to run task 'StopTomcat'.</span></p>
 					</section>
 
 				</section>
@@ -215,11 +215,13 @@ Sudo ~ Par ~ StopTomcat(hosts)
 						<pre><code data-trim contenteditable>
 val stage = new Production
 
-implicit val allowStopTomInProd: Production Allow StopTomcat = new Allow[Production, StopTomcat]
+implicit val allowStopTomInProd: Production Allow StopTomcat = 
+	new Allow[Production, StopTomcat]
 
 Sudo ~ Par ~ StopTomcat(hosts)
 					</code></pre>	
 						</p>
+					<p><span class="fragment" style="color:green">:)</span></p>
 					</section>
 
 				</section>

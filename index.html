@@ -81,6 +81,22 @@
 					</p>
 				</section>
 
+				<section>
+					<h2>tasks</h2>
+					<p>Tasks is a library for building executable (shell)-scripts functional way.</p>
+					<pre><code data-trim contenteditable>
+  val deployApp =
+      RmIfExists(hosts, artifact) andThen
+      Upload(hosts, artifact) andThen
+      StopTomcat(hosts) andThen
+      Mv(artifact, webapps) andThen
+      StartTomcat(hosts) andThen
+      Wait(5 seconds) andThen
+      CheckUrl(hosts, url) andThen
+      NotifyMessageOk
+					</code></pre>
+					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+				</section>
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section>

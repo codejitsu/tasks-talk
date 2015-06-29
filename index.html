@@ -127,19 +127,12 @@ Rm(hosts, user.home / "myapp.war")
 						<p><span class="fragment">
 						<pre><code data-trim contenteditable>
 val taskRm = Rm(hosts, user.home / artifact)
-					</code></pre>	
-						</span></p>
-												<p><span class="fragment">
-						<pre><code data-trim contenteditable>
+
 val taskUpload = Upload(hosts, artifact)
-					</code></pre>	
-						</span></p>
-						<p><span class="fragment">
-						<pre><code data-trim contenteditable>
+
 val taskComposition = taskRm andThen taskUpload
 					</code></pre>	
 						</span></p>
-
 					</section>
 				</section>
 

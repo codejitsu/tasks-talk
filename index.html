@@ -190,7 +190,40 @@ val tom = RestartTomcat(hosts) orElse MessageTomcatFailed
       NotifyDeploymentOk orElse 
       NotifyDeploymentFail
 					</code></pre>
+					<p><span class="fragment">StopTomcat...</span> <span class="fragment">in production?!</span></p>
 				</section>
+				
+				<section>
+					<section id="par">
+						<h2>Compile time access control!</h2>
+						<p>
+						<pre><code data-trim contenteditable>
+val stage = new Production
+
+Sudo ~ Par ~ StopTomcat(hosts)
+					</code></pre>	
+						</p>
+						<p><span class="fragment">Compile time error:</span> <span class="fragment">Stage not allowed to run task 'StopTomcat'.</span></p>
+					</section>
+
+				</section>
+
+				<section>
+					<section id="par">
+						<h2>Compile time access control!</h2>
+						<p>
+						<pre><code data-trim contenteditable>
+val stage = new Production
+
+implicit val allowStopTomInProd: Production Allow StopTomcat = new Allow[Production, StopTomcat]
+
+Sudo ~ Par ~ StopTomcat(hosts)
+					</code></pre>	
+						</p>
+					</section>
+
+				</section>
+
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section>

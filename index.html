@@ -96,6 +96,30 @@
       NotifyMessageOk
 					</code></pre>
 				</section>
+				
+				<section>
+					<h2>Predefined tasks</h2>
+					<ul>
+						<li>Rm</li>
+						<li>Mv</li>
+						<li>Upload</li>
+						<li>PostRequest</li>
+						<li>StartTomcat</li>
+						<li>...</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Hosts DSL</h2>
+					<pre><code data-trim contenteditable>
+import net.codejitsu.tasks.dsl.Tasks._
+
+val hosts = "test-host" | (1 to 25) | ".my.net.com"
+// test-host1.my.net.com, test-host2.my.net.com, ..., test-host25.my.net.com
+
+RmIfExists(hosts, user.home / "myapp.war")
+					</code></pre>
+				</section>
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section>

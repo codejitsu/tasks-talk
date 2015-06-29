@@ -98,7 +98,7 @@
 				</section>
 				
 				<section>
-					<h2>Predefined tasks</h2>
+					<h2>Predefined building blocks</h2>
 					<ul>
 						<li>Rm</li>
 						<li>Mv</li>
@@ -124,7 +124,7 @@ Rm(hosts, user.home / "myapp.war")
 				<section>
 					<section id="tasks">
 						<h2>Tasks are composable</h2>
-						<p><span class="fragment">
+						<p>
 						<pre><code data-trim contenteditable>
 val taskRm = Rm(hosts, user.home / artifact)
 
@@ -132,28 +132,32 @@ val taskUpload = Upload(hosts, artifact)
 
 val taskComposition = taskRm andThen taskUpload
 					</code></pre>	
-						</span></p>
+						</p>
 					</section>
 				</section>
 				<section>	
 					<section id="par">
 						<h2>Parallel all the things!</h2>
-						<p><span class="fragment">
+						<p>
 						<pre><code data-trim contenteditable>
+
 val taskRm = Par ~ Rm(hosts, user.home / artifact)
+
 					</code></pre>	
-						</span></p>
+						</p>
 					</section>
 				</section>
 
 				<section>	
 					<section id="sudo">
 						<h2>Sudo all the things!</h2>
-						<p><span class="fragment">
+						<p>
 						<pre><code data-trim contenteditable>
+
 val taskRm = Sudo ~ Par ~ Rm(hosts, user.home / artifact)
+
 					</code></pre>	
-						</span></p>
+						</p>
 					</section>
 				</section>
 

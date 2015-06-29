@@ -175,6 +175,22 @@ val tom = RestartTomcat(hosts) orElse MessageTomcatFailed
 					</section>
 				</section>
 
+				<section>
+					<h2>Example script</h2>
+					<pre><code data-trim contenteditable>
+  val deployApp =
+      Par ~ RmIfExists(hosts, user.home / s"$artifact*") andThen
+      Par ~ Upload(hosts, targetPath / artifact, user.home) andThen
+      Sudo ~ Par ~ StopTomcat(hosts) andThen
+      Sudo ~ Par ~ RmIfExists(hosts, webapps / s"$name*") andThen
+      Sudo ~ Par ~ Mv(hosts, user.home / artifact, webapps) andThen
+      Sudo ~ Par ~ StartTomcat(hosts) andThen
+      Wait(5 seconds) andThen
+      Par ~ CheckUrl(hosts, s"/$name-$version/example/check/", 8080, _.contains("OK")) andThen
+      NotifyDeploymentOk orElse 
+      NotifyDeploymentFail
+					</code></pre>
+				</section>
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section>

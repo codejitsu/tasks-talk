@@ -184,7 +184,7 @@ val tom = RestartTomcat(hosts) orElse MessageTomcatFailed
       Sudo ~ Par ~ Mv(hosts, user.home / artifact, webapps) andThen
       Sudo ~ Par ~ StartTomcat(hosts) andThen
       Wait(5 seconds) andThen
-      Par ~ CheckUrl(hosts, s"/$name-$version/example/check/", 8080, _.contains("OK")) andThen
+      Par ~ CheckUrl(hosts, "/check/", 8080, _.contains("OK")) andThen
       NotifyDeploymentOk orElse 
       NotifyDeploymentFail
 					</code></pre>

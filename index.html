@@ -117,9 +117,32 @@ import net.codejitsu.tasks.dsl.Tasks._
 val hosts = "test-host" | (1 to 25) | ".my.net.com"
 // test-host1.my.net.com, test-host2.my.net.com, ..., test-host25.my.net.com
 
-RmIfExists(hosts, user.home / "myapp.war")
+Rm(hosts, user.home / "myapp.war")
 					</code></pre>
 				</section>
+				
+				<section>
+					<section id="fragments">
+						<h2>Tasks are composable</h2>
+						<p><span class="fragment">
+						<pre><code data-trim contenteditable>
+val taskRm = Rm(hosts, user.home / artifact)
+					</code></pre>	
+						</span></p>
+												<p><span class="fragment">
+						<pre><code data-trim contenteditable>
+val taskUpload = Upload(hosts, artifact)
+					</code></pre>	
+						</span></p>
+						<p><span class="fragment">
+						<pre><code data-trim contenteditable>
+val taskComposition = taskRm andThen taskUpload
+					</code></pre>	
+						</span></p>
+
+					</section>
+				</section>
+
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section>

@@ -199,10 +199,19 @@ val tom = RestartTomcat(hosts) orElse MessageTomcatFailed
 						<pre><code data-trim contenteditable>
 val stage = new Production
 
-Sudo ~ Par ~ StopTomcat(hosts)
+val stop = Sudo ~ Par ~ StopTomcat(hosts)
+
+stop.run()
 					</code></pre>	
 						</p>
-						<p><span class="fragment">Compile time error:</span> <span class="fragment" style="font-style:italic">Stage not allowed to run task 'StopTomcat'.</span></p>
+						<p><span class="fragment">Compile time error:</span></p>
+						<p><span class="fragment">
+						<pre><code data-trim contenteditable>
+[error] /DeploySettings.scala:93: Stage is not allowed to run task 'net.codejitsu.tasks.StopTomcat[S]'.
+[error]     Sudo ~ Par ~ StopTomcat(hosts) andThen
+				   ^
+					</code></pre>								
+						</span></p>
 					</section>
 
 				</section>

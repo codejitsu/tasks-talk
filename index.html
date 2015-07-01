@@ -197,7 +197,7 @@ val tom = RestartTomcat(hosts) orElse MessageTomcatFailed
 						<h2>Compile time access control!</h2>
 						<p>
 						<pre><code data-trim contenteditable>
-val stage = new Production
+implicit val stage = new Production
 
 val stop = Sudo ~ Par ~ StopTomcat(hosts)
 
@@ -222,7 +222,7 @@ stop.run()
 						<h2>Compile time access control!</h2>
 						<p>
 						<pre><code data-trim contenteditable>
-val stage = new Production
+implicit val stage = new Production
 
 implicit val allowStopTomInProd: Production Allow StopTomcat = 
 	new Allow[Production, StopTomcat]

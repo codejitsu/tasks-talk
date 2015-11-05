@@ -103,6 +103,23 @@
 				</section>
 				
 				<section>
+					<h2>tasks</h2>
+					<p>with for comprehension</p>
+					<pre><code data-trim contenteditable>
+  val deployApp = for {
+      _ <- RmIfExists(hosts, artifact)
+      _ <- Upload(hosts, artifact)
+      _ <- StopTomcat(hosts)
+      _ <- Mv(artifact, webapps)
+      _ <- StartTomcat(hosts)
+      _ <- Wait(5 seconds)
+      _ <- CheckUrl(hosts, url)
+      notify <- NotifyMessageOk
+  } yield notify
+					</code></pre>
+				</section>				
+				
+				<section>
 					<h2>Predefined building blocks</h2>
 					<ul>
 						<li>Rm</li>
